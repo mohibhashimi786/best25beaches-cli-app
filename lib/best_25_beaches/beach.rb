@@ -12,6 +12,10 @@ class Best25Beaches::Beach
 		self.class.all << self
 	end
 
+	def self.locate(selector)
+		self.all[selector - 1]
+	end
+
 	def self.create_from_index(beach)
 		name = beach.xpath("//*[@id='TC_INNER1']/div[1]/div[2]/div[1]/a").text
 		location = beach.xpath("//*[@id='TC_INNER5']/div[1]/div[2]/div[2]/a").text
