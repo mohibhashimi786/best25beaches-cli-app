@@ -17,10 +17,11 @@ class Best25Beaches::Beach
 	end
 
 	def self.create_from_index(beach)
-		name = beach.xpath("//*[@id='TC_INNER1']/div[1]/div[2]/div[1]/a").text
-		location = beach.xpath("//*[@id='TC_INNER5']/div[1]/div[2]/div[2]/a").text
-		description = beach.xpath("//*[@id='TC_INNER5']/div[2]/div[1]/ul/li/div/text()").text
-		url = "https://www.tripadvisor.com#{beach.xpath("//*[@id='TC_INNER2']/div[1]/div[2]/div[1]/a").attribute('href').value}"
+		
+		name = beach.xpath("//*[@id='TC_INNER#{i}']/div[1]/div[2]/div[1]/a").text
+		location = beach.xpath("//*[@id='TC_INNER#{i}']/div[1]/div[2]/div[2]/a").text
+		description = beach.xpath("//*[@id='TC_INNER#{i}']/div[2]/div[1]/ul/li/div/text()").text
+		url = "https://www.tripadvisor.com#{beach.xpath("//*[@id='TC_INNER#{i}']/div[1]/div[2]/div[1]/a").attribute('href').value}"
 		self.new(name, location, description, url)
 		binding.pry
 	end
