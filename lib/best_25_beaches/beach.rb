@@ -17,8 +17,8 @@ class Best25Beaches::Beach
 		location = beach.xpath("//*[@id='TC_INNER5']/div[1]/div[2]/div[2]/a").text
 		description = beach.xpath("//*[@id='TC_INNER5']/div[2]/div[1]/ul/li/div/text()").text
 		url = beach.xpath("//*[@id='TC_INNER5']/div[1]/div[2]/div[1]/a")
-		binding.pry
 		self.new(name, location, description, url)
+		binding.pry
 	end
 
 	def self.all
