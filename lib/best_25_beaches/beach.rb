@@ -2,7 +2,11 @@ class Best25Beaches::Beach
 
 	attr_accessor :name, :location, :description, :url
 
-	def initialize
+	def initialize(name = nil, location = nil, description = nil, url = nil)
+		@name = name
+		@location = location
+		@description = description
+		@url = url
 	end
 
 	def self.create_from_index(beach)
