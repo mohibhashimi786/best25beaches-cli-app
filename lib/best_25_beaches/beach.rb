@@ -25,4 +25,24 @@ class Best25Beaches::Beach
 		@@all 
 	end
 
+	def webpage
+		webpage ||= Nokogiri::HTML(open(self.url))
+	end
+
+
+	def activities
+		activities ||= webpage.xpath("//*[@id="taplc_location_detail_header_attractions_0"]/div[1]/span[3]/div")
+	end
+
+	def rating
+	end
+
+	def excellent_review_percentage
+	end
+
+	def visitor_thoughts
+
+	end
+
+
 end
