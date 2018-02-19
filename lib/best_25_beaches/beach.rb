@@ -1,5 +1,7 @@
 class Best25Beaches::Beach 
 
+	@@all = []
+
 	attr_accessor :name, :location, :description, :url
 
 	def initialize(name = nil, location = nil, description = nil, url = nil)
@@ -7,6 +9,7 @@ class Best25Beaches::Beach
 		@location = location
 		@description = description
 		@url = url
+		self.class.all << self
 	end
 
 	def self.create_from_index(beach)
@@ -18,6 +21,8 @@ class Best25Beaches::Beach
 		self.new(name, location, description, url)
 	end
 
-
+	def self.all
+		@@all 
+	end
 
 end

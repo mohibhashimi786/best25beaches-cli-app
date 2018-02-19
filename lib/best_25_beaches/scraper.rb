@@ -14,7 +14,7 @@ class Best25Beaches::Scraper
 	def create_beach
 		scrape_index_page.each do |beach|
 			Best25Beaches::Beach.create_from_index(beach)
-			
+			binding.pry
 		end
 	end
 
