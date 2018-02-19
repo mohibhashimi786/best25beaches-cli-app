@@ -9,7 +9,7 @@ class Best25Beaches::CLI
 
 	
 	def menu
-
+		
 		
 
 	end
