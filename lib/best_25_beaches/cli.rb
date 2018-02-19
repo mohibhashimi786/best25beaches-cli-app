@@ -9,14 +9,15 @@ class Best25Beaches::CLI
 
 	
 	def menu
-		
-		
+
+
 
 	end
 
 
 
 	def exit
+		Best25Beaches::Scraper.new.create_beach
 		"Please come backs soon"
 	end
 
