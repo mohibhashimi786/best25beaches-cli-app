@@ -2,16 +2,15 @@
 class Best25Beaches::CLI
 
 	def call
-		Best25Beaches::Scraper.new.create_beach
-		puts "top beaches"
-		menu
-		exit
+	Best25Beaches::Scraper.new.create_beach
+	menu
+		
 	end
 
 	
 	def menu
 		Best25Beaches::Beach.all.each.with_index(1) do |a,b|
-			puts "#{b}... #{a.location}...#{a.description}"
+			puts "#{b}... #{a.name}...#{a.description}"
 		end
 
 

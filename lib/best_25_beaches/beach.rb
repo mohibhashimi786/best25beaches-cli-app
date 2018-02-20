@@ -4,7 +4,7 @@ class Best25Beaches::Beach
 
 	attr_accessor :name, :location, :description, :url, :activities, :rating, :excellent_review_percentage, :visitor_thoughts
 
-	def initialize(name = nil, location = nil, description =nil, url = nil)
+	def initialize
 		@name = name
 		@location = location
 		@description = description
@@ -13,19 +13,8 @@ class Best25Beaches::Beach
 		
 	end
 
-	def create_from_index(beach)
-
-		i = 1
-		while i < 25
-		newbeach = self.new
-		newbeach.name = beach.xpath("//*[@id='TC_INNER#{i}']/div[1]/div[2]/div[1]/a").text
-		newbeach.location = beach.xpath("//*[@id='TC_INNER#{i}']/div[1]/div[2]/div[2]/a").text
-		newbeach.description = beach.xpath("//*[@id='TC_INNER#{i}']/div[2]/div[1]/ul/li/div/text()").text
-		newbeach.url = "https://www.tripadvisor.com#{beach.xpath("//*[@id='TC_INNER#{i}']/div[1]/div[2]/div[1]/a").attribute('href').value}"
-		i+=1
-		end
-		binding.pry
-	end
+	
+	
 
 	def self.locate(selector)
 		self.all[selector - 1]
