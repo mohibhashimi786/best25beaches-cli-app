@@ -20,7 +20,7 @@ class Best25Beaches::CLI
 
 
 	def exit
-		Best25Beaches::Scraper.new.create_beach
+
 		"Please come backs soon"
 	end
 

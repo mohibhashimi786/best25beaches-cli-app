@@ -5,25 +5,24 @@ class Best25Beaches::Scraper
 
 	end
 
-	def scrape_names
-		index_page = []
-		i = 0
-		while i < 25
-		i+=1
-		pages = self.get_page.xpath("//*[@id='TC_INNER#{i}']/div[1]/div[2]/div[1]/a").text
-		index_page << pages
+	
+
+	def create_beach
+		beaches = []
+	    counter = 1
+	    while counter < 25
+	    beaches << self.get_page.xpath("//*[@id='TC_INNER#{counter}']/div[1]/div[2]/div[1]/a")
+		counter+=1
 		end
-		index_page.each do |beach| beach 
+		beaches
 		binding.pry
 	end
 
-	def create_beach
-		scrape_index_page.each do |beach|
-			Best25Beaches::Beach.create_from_index(beach)
+	def create_index
+		create_beach.each do |beach| Best25Beaches::Beach.create_from_index(beach)
 			binding.pry
-			
 		end
+	
 	end
-
 
 end
