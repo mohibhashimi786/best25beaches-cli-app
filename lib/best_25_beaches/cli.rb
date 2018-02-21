@@ -11,15 +11,12 @@ class Best25Beaches::CLI
 	def menu
 		Best25Beaches::Beach.all.each.with_index do |a,b|
 					puts "#{b}... #{a.name}...#{a.activities}"
-				end
-		
-		
+				end	
 	end
 
 
 
 	def exit
-
 		"Please come backs soon"
 	end
 

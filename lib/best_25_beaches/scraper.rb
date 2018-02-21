@@ -4,7 +4,6 @@ class Best25Beaches::Scraper
 
 	def get_page
 		Nokogiri::HTML(open('https://www.tripadvisor.com/TravelersChoice-Beaches'))
-
 	end
 
 	def index_of_beaches
@@ -18,14 +17,12 @@ class Best25Beaches::Scraper
 
 	def create_beach
 		self.index_of_beaches.flatten.each.with_index(1) do |beach_scrape, index| 
-		new_beach = Best25Beaches::Beach.new
-		new_beach.name = beach_scrape.text
-		new_beach.location = beach_scrape.xpath("//*[@id='TC_INNER#{index}']/div[1]/div[2]/div[2]/a").text
-		new_beach.description = beach_scrape.xpath("//*[@id='TC_INNER#{index}']/div[2]/div[1]/ul/li/div/text()").text
-		new_beach.url = "https://www.tripadvisor.com" + beach_scrape.xpath("//*[@id='TC_INNER#{index}']/div[1]/div[2]/div[1]/a").attribute('href').value
-	
+		name = beach_scrape.text
+	    location = beach_scrape.xpath("//*[@id='TC_INNER#{index}']/div[1]/div[2]/div[2]/a").text
+		description = beach_scrape.xpath("//*[@id='TC_INNER#{index}']/div[2]/div[1]/ul/li/div/text()").text
+		url = "https://www.tripadvisor.com" + beach_scrape.xpath("//*[@id='TC_INNER#{index}']/div[1]/div[2]/div[1]/a").attribute('href').value
+	    Best25Beaches::Beach.new(name, location, description, url)
 		end
-		
 	end
 
 end

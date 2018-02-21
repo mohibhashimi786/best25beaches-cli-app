@@ -4,7 +4,7 @@ class Best25Beaches::Beach
 
 	attr_accessor :name, :location, :description, :url, :activities, :rating, :excellent_review_percentage, :visitor_thoughts
 
-	def initialize
+	def initialize(name = nil, location = nil, description = nil, url = nil)
 		@name = name
 		@location = location
 		@description = description
@@ -13,14 +13,9 @@ class Best25Beaches::Beach
 		
 	end
 
-	
-	
-
 	def self.locate(selector)
 		self.all[selector - 1]
 	end
-
-	
 
 	def self.all
 		@@all 
@@ -37,7 +32,9 @@ class Best25Beaches::Beach
 	end
 
 	def rating
-		@rating ||= webpage.xpath("//*[@id='taplc_location_detail_overview_attraction_0']/div[1]/div[2]/div[2]/div[2]/div[1]/span").text
+		@rating ||= webpage.css("#taplc_location_detail_overview_attraction_0 > div.block_wrap.easyClear > div.overviewContent > div.ui_columns.is-multiline.is-mobile.reviewsAndDetails > div.ui_column.is-6.reviews > div.rating > span").text
+
+
 	end
 
 	def excellent_review_percentage
