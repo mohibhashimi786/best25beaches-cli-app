@@ -1,8 +1,11 @@
 #CLI controller
 class Best25Beaches::CLI
 
+	
+
+
 	def call
-	Best25Beaches::Scraper.new.create_beach
+	Best25Beaches::Scraper.run
 	menu
 		
 	end
@@ -10,7 +13,7 @@ class Best25Beaches::CLI
 	
 	def menu
 		Best25Beaches::Beach.all.each.with_index do |a,b|
-					puts "#{b}... #{a.name}...#{a.activities}"
+					puts "#{b+1}... #{a.name}...#{a.visitor_thoughts}...#{a.excellent_review_percentage}."
 				end	
 	end
 
