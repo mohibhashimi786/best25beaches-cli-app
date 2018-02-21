@@ -9,7 +9,7 @@ class Best25Beaches::Beach
 		@location = location
 		@description = description
 		@url = url
-		@@all << self
+		self.class.all << self
 		
 	end
 
