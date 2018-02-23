@@ -17,7 +17,7 @@ class Best25Beaches::CLI
 			
 
 
-					puts "#{b+1}... #{a.name}...#{a.hotels}.."
+					puts "#{b+1}... #{a.name}...#{a.hotels}..#{a.restaurants}..#{a.nearby_attractions}"
 				end	
 	end
 
