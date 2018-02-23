@@ -2,7 +2,7 @@ class Best25Beaches::Beach
 
 	@@all = []
 
-	attr_accessor :name, :location, :description, :url, :activities, :rating, :excellent_review_percentage, :visitor_thoughts
+	attr_accessor :name, :location, :description, :url, :activities, :rating, :excellent_review_percentage, :hotels, :restaurants, :attractions
 
 	def initialize(name = nil, location = nil, description = nil, url = nil)
 		@name = name

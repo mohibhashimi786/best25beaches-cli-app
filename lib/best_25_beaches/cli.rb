@@ -10,10 +10,14 @@ class Best25Beaches::CLI
 		
 	end
 
+
 	
 	def menu
 		Best25Beaches::Beach.all.each.with_index do |a,b|
-					puts "#{b+1}... #{a.name}...#{a.visitor_thoughts}...#{a.excellent_review_percentage}."
+			
+
+
+					puts "#{b+1}... #{a.name}...#{a.hotels}.."
 				end	
 	end
 

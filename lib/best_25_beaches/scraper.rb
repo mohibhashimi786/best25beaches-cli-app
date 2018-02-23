@@ -3,8 +3,9 @@ class Best25Beaches::Scraper
 	BEACHES = []
 
 	def self.run
-    create_beach
-    webpage
+     	create_beach
+   	    webpage_scrape
+   	    nearby
   	end
 
 	def self.get_page
@@ -31,7 +32,7 @@ class Best25Beaches::Scraper
 		end
 	end
 
-	 def self.webpage
+	def self.webpage_scrape
 			Best25Beaches::Beach.all.each do |beach|
 			webpage = Nokogiri::HTML(open(beach.url))
 			beach.visitor_thoughts ||= webpage.css("#taplc_location_detail_overview_attraction_0 > div.block_wrap.easyClear > div.overviewContent > div.ui_columns.is-multiline.is-mobile.reviewsAndDetails > div.ui_column.is-12.descriptionRow > div.prw_rup.prw_common_location_description > div > div.text").text
@@ -41,6 +42,22 @@ class Best25Beaches::Scraper
 		
 	 	end
 
+	end
+
+
+	def self.nearby
+			Best25Beaches::Beach.all.each do |beach|
+				webpage = Nokogiri::HTML(open(beach.url))
+				beach.hotels = []
+				counter = 1
+				while counter <= 3
+				beach.hotels << webpage.xpath("//*[@id='LOCATION_TAB']/div[3]/div/div[#{counter}]/div/div[2]/div[1]").text
+				counter += 1
+				beach.hotels
+			end
+			binding.pry
+		end
+		
 	end
 
 end
