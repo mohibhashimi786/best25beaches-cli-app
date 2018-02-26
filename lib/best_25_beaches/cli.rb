@@ -2,16 +2,18 @@
 require 'colorize'
 class Best25Beaches::CLI
 
+
 	def call
 	Best25Beaches::Scraper.run
 	menu
+	
 	end
 
 	def list
 		puts "Welcome to the first step of your dream destination vacation!"
 			puts "Here are the top 25 best beach destinations in the world:"
 		Best25Beaches::Beach.all.each.with_index do |a,b|
-			puts "			#{b+1}. #{a.name}"
+			puts ("                 #{b+1}. #{a.name}").colorize(:light_blue)
 		end
 	end
 
@@ -25,13 +27,14 @@ class Best25Beaches::CLI
 					exit
 				elsif input.to_i.between?(1, 26)
 					if beach = Best25Beaches::Beach.locate(input.to_i)
-					print_beach(beach)
+						print_beach(beach) 
 					else
 						menu
 					end
 				else
 					menu
 				end
+
 	end
 
 	def print_beach(beach)
@@ -71,16 +74,6 @@ class Best25Beaches::CLI
 							end
 				end
 		end
-		puts "Would you like information information on another beach? Enter 'Y' or 'N'"
-			input2 = gets.strip.downcase
-    		if input == "y"
-      		start
-    		else
-      		puts ""
-      		puts "Thank you! Have a great day!"
-      		exit
-      		end
-    end    
 		
 	end
 
