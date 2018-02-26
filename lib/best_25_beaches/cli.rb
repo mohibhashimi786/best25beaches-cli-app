@@ -38,9 +38,9 @@ class Best25Beaches::CLI
 	def print_beach(beach)
 		input1 = ""
 		until input1 == 'exit' || input1 == 'hotels' || input1 == 'restaurants' || input1 == 'attractions' || input1 == 'menu'
-			puts "**********************#{beach.name}**********************"
-			puts "**********************#{beach.location}**********************"
-			puts "***********#{beach.description}***********"
+			puts "NAME:  #{beach.name.upcase}".center(50, "-")
+			puts "LOCATION:  #{beach.location}".center(50, "-")
+			puts "DESCRIPTION:  #{beach.description}".center(50, "-")
 			puts "For nearby hotels, please enter 'hotels, for nearby restaurants, please 'restaurants, and for nearby attractions, please type 'attractions."
 			puts "If you would like information on another beach, please type 'menu' or type 'exit' to leave the program."
 			input1 = gets.strip
@@ -50,11 +50,17 @@ class Best25Beaches::CLI
 					when 'menu'
 						menu
 					when "hotels"
-						puts "#{beach.hotels}".center(50, '_').colorize(:white)
+						beach.hotels.each.with_index(1) do |hotel, index| 
+							puts "#{index}. #{hotel}"
+						 	end
 					when "restaurants"
-						puts "#{beach.restaurants}".center(50, '_').colorize(:light_blue)
+						beach.restaurants.each.with_index(1) do |restaurant, index|
+						 	puts "#{index}. #{restaurant}"
+						    end
 					when "attractions"
-						puts "#{beach.attractions}".center(50, '_').colorize(:light_blue)
+						beach.attractions.each.with_index(1) do |attraction, index|
+							puts "#{index}. #{attraction}"
+							end
 				end
 		end
 	end
