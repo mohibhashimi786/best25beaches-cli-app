@@ -26,7 +26,6 @@ class Best25Beaches::CLI
 				elsif input.to_i.between?(1, 26)
 					if beach = Best25Beaches::Beach.locate(input.to_i)
 					print_beach(beach)
-					puts "If you would like information on another beach, please type 'menu' to choose again or type 'exit' to leave the program."
 					else
 						menu
 					end
@@ -56,19 +55,32 @@ class Best25Beaches::CLI
 					when 'menu'
 						menu
 					when "hotels"
+							puts "Hotels:"
 						beach.hotels.each.with_index(1) do |hotel, index| 
 							puts "#{index}. #{hotel}"
 						 	end
 					when "restaurants"
+							puts "Restaurants:"
 						beach.restaurants.each.with_index(1) do |restaurant, index|
 						 	puts "#{index}. #{restaurant}"
 						    end
 					when "attractions"
+							puts "Attractions:"
 						beach.nearby_attractions.each.with_index(1) do |attraction, index|
 							puts "#{index}. #{attraction}"
 							end
 				end
 		end
+		puts "Would you like information information on another beach? Enter 'Y' or 'N'"
+			input2 = gets.strip.downcase
+    		if input == "y"
+      		start
+    		else
+      		puts ""
+      		puts "Thank you! Have a great day!"
+      		exit
+      		end
+    end    
 		
 	end
 
