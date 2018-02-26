@@ -58,27 +58,44 @@ class Best25Beaches::CLI
 					when 'menu'
 						menu
 					when "hotels"
-							puts "Hotels:"
+							puts ""
+							puts "Hotels:".colorize(:light_blue)
 						beach.hotels.each.with_index(1) do |hotel, index| 
-							puts "#{index}. #{hotel}"
+							puts ("#{index}. #{hotel}").colorize(:green)
 						 	end
+						 	exit_or_restart
 					when "restaurants"
-							puts "Restaurants:"
+							puts ""
+							puts "Restaurants:".colorize(:light_blue)
 						beach.restaurants.each.with_index(1) do |restaurant, index|
-						 	puts "#{index}. #{restaurant}"
+						 	puts ("#{index}. #{restaurant}").colorize(:green)
 						    end
+						    exit_or_restart
 					when "attractions"
-							puts "Attractions:"
+							puts ""
+							puts "Attractions:".colorize(:light_blue)
 						beach.nearby_attractions.each.with_index(1) do |attraction, index|
-							puts "#{index}. #{attraction}"
+							puts ("#{index}. #{attraction}").colorize(:green)
 							end
+							exit_or_restart
 				end
 		end
 		
 	end
 
+	def exit_or_restart
+		puts "Would you like information information on another beach? Enter 'Y' or 'N'"
+		input2 = gets.strip.downcase	
+    	if input2 == "y"
+      		menu
+    	else
+			     puts ""
+			     puts "Thank you! Have a great day!"
+			    end
+	end
+
 	def exit
-		puts "Please come backs soon, Goodbye :-)"
+		puts "Please come back soon, Goodbye :-)"
 	end
 
 end
