@@ -1,17 +1,21 @@
 class Best25Beaches::Scraper
 
+	#create constant assigned to empty array to allow capture of Nokogiri nodes in subsequent steps
 	BEACHES = []
 
+	#order of methods that are run when scraper class is called
 	def self.run
      	create_beach
    	    webpage_scrape
    	    nearby
   	end
 
+  	#acquires the main index page and converts it to nodes
 	def self.get_page
 		Nokogiri::HTML(open('https://www.tripadvisor.com/TravelersChoice-Beaches'))
 	end
 
+	#Method allow the BEACH constant to capture each each individual Beach's nodes
 	def self.index_of_beaches
 	    counter = 1
 		    while counter <= 25
@@ -21,6 +25,7 @@ class Best25Beaches::Scraper
 		BEACHES
 	end
 
+	#using the previous method above, #create_beach initializes each beach object by scraping the required attributes including the 'url' attribute which will subsequently be used to scrape additional 'individual beach' attributes 
 	def self.create_beach
 		index_of_beaches.flatten.each.with_index(1) do |beach_scrape, index| 
 			name = beach_scrape.text
@@ -32,6 +37,7 @@ class Best25Beaches::Scraper
 		end
 	end
 
+	#scrapes additional beach by drilling down to individual 'beach' webpages
 	def self.webpage_scrape
 		Best25Beaches::Beach.all.each do |beach|
 			webpage = Nokogiri::HTML(open(beach.url))
@@ -41,6 +47,7 @@ class Best25Beaches::Scraper
 	 	end										
 	end
 
+	#within individual beach webpages, scrapes additional attributes, which have their own respective webpages.  This may be used to potentially expand the cli to acquire 'attributes' of attributes.
 	def self.nearby
 		Best25Beaches::Beach.all.each do |beach|
 			webpage = Nokogiri::HTML(open(beach.url))

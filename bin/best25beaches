@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-
+#runs the program 
 require './lib/best_25_beaches'
 Best25Beaches::CLI.new.call

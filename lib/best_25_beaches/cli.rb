@@ -2,13 +2,14 @@
 require 'colorize'
 class Best25Beaches::CLI
 
-
+	#call method runs the scraper class to 'make available' all data, which can then be printed to the user in customized approaches.  Additionally, it starts interaction with user by means of the 'menu' method
 	def call
 	Best25Beaches::Scraper.run
 	menu
 	
 	end
 
+	#prints a list of the top 25 beaches for user.
 	def list
 		puts "___________________________________________________________________".colorize(:yellow)
 		puts ""
@@ -23,7 +24,7 @@ class Best25Beaches::CLI
 		puts ""
 	end
 
-
+	#runs the list method and sets up conditionals to ensure user input is entered in a particular manner.  Additionally, allows user to obtain more information about a particular beach and/or to restart the menu or exit at any point
 	def menu
 			list
 			puts "Please enter the number of the beach you would like more information on or type 'exit' to leave the program."
@@ -40,9 +41,9 @@ class Best25Beaches::CLI
 				else
 					menu
 				end
-
 	end
 
+	#prints the individualized information about a particular beach and setting up avenue for user to return back to menu to select an alternative beach.
 	def print_beach(beach)
 		input1 = ""
 		until input1 == 'exit' || input1 == 'hotels' || input1 == 'restaurants' || input1 == 'attractions' || input1 == 'menu'
@@ -93,6 +94,7 @@ class Best25Beaches::CLI
 		end
 	end
 
+	#allows user to exit the program or return to original menu listing all beaches for selection
 	def exit_or_restart
 		puts "___________________________________________________________________".colorize(:yellow)
 		puts ""
@@ -106,6 +108,7 @@ class Best25Beaches::CLI
 			    end
 	end
 
+	#exits the program
 	def exit
 		puts "Please come back soon, Goodbye :-)"
 	end
