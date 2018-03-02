@@ -40,16 +40,16 @@ class Best25Beaches::CLI
 	def print_beach(beach)
 		input1 = ""
 		until input1 == 'exit' || input1 == 'hotels' || input1 == 'restaurants' || input1 == 'attractions' || input1 == 'menu'
-			puts "NAME:  #{beach.name.upcase}".center(50, "-")
-			puts "LOCATION:  #{beach.location}".center(50, "-")
-			puts "DESCRIPTION:  #{beach.description}".center(50, "-")
-			puts "BEACH RATING: #{beach.rating}".center(50, "-")
-			puts "BEACH ACTIVITIES: #{beach.activities}".center(50, "-")
-			puts "EXCELLENT REVIEW PERCENTAGE:  #{beach.excellent_review_percentage}".center(50, "-")
+			puts ("NAME:  #{beach.name.upcase}".center(50, "-")).colorize(:light_blue)
+			puts ("LOCATION:  #{beach.location}".center(50, "-")).colorize(:light_blue ).colorize( :background => :yellow)
+			puts ("DESCRIPTION:  #{beach.description}".center(50, "-")).colorize(:light_blue ).colorize( :background => :yellow)
+			puts ("BEACH RATING: #{beach.rating}".center(50, "-")).colorize(:light_blue ).colorize( :background => :yellow)
+			puts ("BEACH ACTIVITIES: #{beach.activities}".center(50, "-")).colorize(:light_blue ).colorize( :background => :yellow)
+			puts ("EXCELLENT REVIEW PERCENTAGE:  #{beach.excellent_review_percentage}".center(50, "-")).colorize(:light_blue ).colorize( :background => :yellow)
+			puts "___________________________________________________________________".colorize(:yellow)
 			puts ""
-			puts ""
-			puts "For nearby hotels, please enter 'hotels, for nearby restaurants, please 'restaurants, and for nearby attractions, please type 'attractions."
-			puts "If you would like information on another beach, please type 'menu' or type 'exit' to leave the program."
+			puts "For nearby hotels, please enter 'hotels, for nearby restaurants, please type 'restaurants, and for nearby attractions, please type 'attractions.".colorize(:green)
+			puts "If you would like information on another beach, please type 'menu' or type 'exit' to leave the program.".colorize(:green)
 			puts ""
 			input1 = gets.strip
 				case input1
@@ -84,7 +84,7 @@ class Best25Beaches::CLI
 	end
 
 	def exit_or_restart
-		puts "Would you like information information on another beach? Enter 'Y' or 'N'"
+		puts "Would you like information on another beach? Enter 'Y' or 'N'"
 		input2 = gets.strip.downcase	
     	if input2 == "y"
       		menu
