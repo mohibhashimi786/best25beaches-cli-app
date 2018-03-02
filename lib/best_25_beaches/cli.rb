@@ -10,11 +10,17 @@ class Best25Beaches::CLI
 	end
 
 	def list
+		puts "___________________________________________________________________".colorize(:yellow)
+		puts ""
 		puts "Welcome to the first step of your dream destination vacation!"
 			puts "Here are the top 25 best beach destinations in the world:"
+			puts ""
+			puts ""
 		Best25Beaches::Beach.all.each.with_index do |a,b|
 			puts ("                 #{b+1}. #{a.name}").colorize(:light_blue)
 		end
+		puts ""
+		puts ""
 	end
 
 
@@ -40,12 +46,14 @@ class Best25Beaches::CLI
 	def print_beach(beach)
 		input1 = ""
 		until input1 == 'exit' || input1 == 'hotels' || input1 == 'restaurants' || input1 == 'attractions' || input1 == 'menu'
-			puts ("NAME:  #{beach.name.upcase}".center(50, "-")).colorize(:light_blue)
-			puts ("LOCATION:  #{beach.location}".center(50, "-")).colorize(:light_blue ).colorize( :background => :yellow)
-			puts ("DESCRIPTION:  #{beach.description}".center(50, "-")).colorize(:light_blue ).colorize( :background => :yellow)
-			puts ("BEACH RATING: #{beach.rating}".center(50, "-")).colorize(:light_blue ).colorize( :background => :yellow)
-			puts ("BEACH ACTIVITIES: #{beach.activities}".center(50, "-")).colorize(:light_blue ).colorize( :background => :yellow)
-			puts ("EXCELLENT REVIEW PERCENTAGE:  #{beach.excellent_review_percentage}".center(50, "-")).colorize(:light_blue ).colorize( :background => :yellow)
+			puts "___________________________________________________________________".colorize(:yellow)
+			puts ""
+			puts "NAME:".colorize(:light_red) + "#{beach.name.upcase}".center(50, "-").colorize(:light_green)
+			puts "LOCATION:".colorize(:light_red) + "#{beach.location}".center(50, "-").colorize(:light_green)
+			puts "DESCRIPTION:".colorize(:light_red) + "  #{beach.description}".center(50, "-").colorize(:light_green)
+			puts "BEACH RATING:".colorize(:light_red) + "#{beach.rating}".center(50, "-").colorize(:light_green)
+			puts "BEACH ACTIVITIES:".colorize(:light_red) + "#{beach.activities}".center(50, "-").colorize(:light_green)
+			puts "EXCELLENT REVIEW PERCENTAGE:".colorize(:light_red) + "#{beach.excellent_review_percentage}".center(50, "-").colorize(:light_green)
 			puts "___________________________________________________________________".colorize(:yellow)
 			puts ""
 			puts "For nearby hotels, please enter 'hotels, for nearby restaurants, please type 'restaurants, and for nearby attractions, please type 'attractions.".colorize(:green)
@@ -60,6 +68,7 @@ class Best25Beaches::CLI
 					when "hotels"
 							puts ""
 							puts "Hotels:".colorize(:light_blue)
+							puts ""
 						beach.hotels.each.with_index(1) do |hotel, index| 
 							puts ("#{index}. #{hotel}").colorize(:green)
 						 	end
@@ -67,6 +76,7 @@ class Best25Beaches::CLI
 					when "restaurants"
 							puts ""
 							puts "Restaurants:".colorize(:light_blue)
+							puts ""
 						beach.restaurants.each.with_index(1) do |restaurant, index|
 						 	puts ("#{index}. #{restaurant}").colorize(:green)
 						    end
@@ -74,16 +84,18 @@ class Best25Beaches::CLI
 					when "attractions"
 							puts ""
 							puts "Attractions:".colorize(:light_blue)
+							puts ""
 						beach.nearby_attractions.each.with_index(1) do |attraction, index|
 							puts ("#{index}. #{attraction}").colorize(:green)
 							end
 							exit_or_restart
 				end
 		end
-		
 	end
 
 	def exit_or_restart
+		puts "___________________________________________________________________".colorize(:yellow)
+		puts ""
 		puts "Would you like information on another beach? Enter 'Y' or 'N'"
 		input2 = gets.strip.downcase	
     	if input2 == "y"
