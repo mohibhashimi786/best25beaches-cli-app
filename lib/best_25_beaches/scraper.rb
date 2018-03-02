@@ -37,8 +37,7 @@ class Best25Beaches::Scraper
 			webpage = Nokogiri::HTML(open(beach.url))
 			beach.excellent_review_percentage ||= webpage.css("span.row_count.row_cell").text[0...3]
 			beach.rating ||= webpage.css("#taplc_location_detail_overview_attraction_0 > div.block_wrap.easyClear > div.overviewContent > div.ui_columns.is-multiline.is-mobile.reviewsAndDetails > div.ui_column.is-6.reviews > div.rating > span").text
-			beach.activities ||= webpage.xpath("#taplc_location_detail_header_attractions_0 > div.rating_and_popularity > span.header_detail.attraction_details > div")
-			binding.pry
+			beach.activities ||= webpage.css("#taplc_location_detail_header_attractions_0 > div.rating_and_popularity > span.header_detail.attraction_details > div").text
 	 	end										
 	end
 
