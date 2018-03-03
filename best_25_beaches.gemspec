@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{This Gem will find your dream beach destination vacation}
   spec.description   = %q{Gem finds the top 25 best beaches in the world along with nearby hotels, restaurants and attractions}
-  spec.homepage      = "https://github.com/mohibhashimi786/best25beaches-cli-app"
+  spec.homepage      = "https://github.com/mohibhashimi786/best25beaches-cli-gem"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
