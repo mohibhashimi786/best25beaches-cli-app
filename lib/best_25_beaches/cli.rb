@@ -1,5 +1,5 @@
 #CLI controller
-require 'colorize'
+
 class Best25Beaches::CLI
 
 	#call method runs the scraper class to 'make available' all data, which can then be printed to the user in customized approaches.  Additionally, it starts interaction with user by means of the 'menu' method
