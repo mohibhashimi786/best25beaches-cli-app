@@ -1,8 +1,6 @@
 # Best25Beaches
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/best_25_beaches`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome to Best25Beaches.  This Gem will allow you to look up the top 25 beach vacation destination locations in the world.  Additionally, it will provide you with details and ratings about each particular beach as well as telling you about nearby hotels, restaurants and attractions.
 
 ## Installation
 
