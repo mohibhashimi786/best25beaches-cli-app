@@ -57,8 +57,9 @@ class Best25Beaches::CLI
 			puts "EXCELLENT REVIEW PERCENTAGE:".colorize(:light_red) + "#{beach.excellent_review_percentage}".center(50, "-").colorize(:light_green)
 			puts "___________________________________________________________________".colorize(:yellow)
 			puts ""
-			puts "For nearby hotels, please enter 'hotels, for nearby restaurants, please type 'restaurants, and for nearby attractions, please type 'attractions.".colorize(:green)
-			puts "If you would like information on another beach, please type 'menu' or type 'exit' to leave the program.".colorize(:green)
+			puts "For nearby hotels, please enter 'hotels, for nearby restaurants, please type 'restaurants, and for nearby attractions, please type 'attractions.".colorize(:light_blue)
+			puts ""
+			puts "If you would like information on another beach, please type 'menu' or type 'exit' to leave the program.".colorize(:blue)
 			puts ""
 			input1 = gets.strip
 				case input1
@@ -70,7 +71,7 @@ class Best25Beaches::CLI
 							puts ""
 							puts "Hotels:".colorize(:light_blue)
 							puts ""
-						beach.hotels.each.with_index(1) do |hotel, index| 
+							beach.hotels.each.with_index(1) do |hotel, index| 
 							puts ("#{index}. #{hotel}").colorize(:green)
 						 	end
 						 	exit_or_restart
@@ -78,7 +79,7 @@ class Best25Beaches::CLI
 							puts ""
 							puts "Restaurants:".colorize(:light_blue)
 							puts ""
-						beach.restaurants.each.with_index(1) do |restaurant, index|
+							beach.restaurants.each.with_index(1) do |restaurant, index|
 						 	puts ("#{index}. #{restaurant}").colorize(:green)
 						    end
 						    exit_or_restart
@@ -86,7 +87,7 @@ class Best25Beaches::CLI
 							puts ""
 							puts "Attractions:".colorize(:light_blue)
 							puts ""
-						beach.nearby_attractions.each.with_index(1) do |attraction, index|
+							beach.nearby_attractions.each.with_index(1) do |attraction, index|
 							puts ("#{index}. #{attraction}").colorize(:green)
 							end
 							exit_or_restart
