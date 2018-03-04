@@ -43,7 +43,7 @@ class Best25Beaches::CLI
 				end
 	end
 
-	#prints the individualized information about a particular beach and setting up avenue for user to return back to menu to select an alternative beach.
+	#prints individualized information about a particular beach and setting up avenue for user to return back to menu to select an alternative beach.
 	def print_beach(beach)
 		input1 = ""
 		until input1 == 'exit' || input1 == 'hotels' || input1 == 'restaurants' || input1 == 'attractions' || input1 == 'menu'

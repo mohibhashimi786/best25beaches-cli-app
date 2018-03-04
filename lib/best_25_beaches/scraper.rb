@@ -32,8 +32,7 @@ class Best25Beaches::Scraper
 		    location = beach_scrape.xpath("//*[@id='TC_INNER#{index}']/div[1]/div[2]/div[2]/a").text
 			description = beach_scrape.xpath("//*[@id='TC_INNER#{index}']/div[2]/div[1]/ul/li/div/text()").text
 			url = "https://www.tripadvisor.com" + beach_scrape.xpath("//*[@id='TC_INNER#{index}']/div[1]/div[2]/div[1]/a").attribute('href').value
-		    @new_beach = Best25Beaches::Beach.new(name, location, description, url)
-		 	@new_beach
+		    Best25Beaches::Beach.new(name, location, description, url)
 		end
 	end
 
