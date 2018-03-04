@@ -103,10 +103,12 @@ class Best25Beaches::CLI
 		input2 = gets.strip.downcase	
     	if input2 == "y"
       		menu
-    	else
-			     puts ""
-			     puts "Thank you! Have a great day!"
-			    end
+    	elsif input2 == "n"
+			puts ""
+			puts "Thank you! Have a great day!"  
+		else
+		    exit_or_restart
+		end
 	end
 
 	#exits the program
